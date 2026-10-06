@@ -1,0 +1,11 @@
+{
+  "version": "0.14.1",
+  "released": "2026-10-05",
+  "notes": "Judges' phones: Start ride clock is a slab a quarter of the screen, and while the clock runs the whole yellow box is Stop, so neither needs a look at the phone. A tap in the first 0.7 seconds after Start is ignored, since it is the same thumb. The app's PIN screen has a Scan the office QR code button, and says which laptop it is talking to and which version it is.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.14.1",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.14.1/Kinex-Judging-0.14.1-win64.zip",
+  "file": "Kinex-Judging-0.14.1-win64.zip",
+  "size": 66203057,
+  "sha256": "d389f7fe5dbbc1611a8e312e1d7e07c2b4d2fc9c7d7333f9535815948c1d067b",
+  "signature": "k1LoqwsvCDkUvkIAVYWiGrcLHALlHKOsaUH36-iTba36lwBY4gB2I6gJPyB6zHVPFY0WyiTXv-6hkTtG9exaAQ"
+}

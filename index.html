@@ -1,0 +1,955 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Rough stock judging software. Judges send one mark from a phone at the chutes; the secretary, the announcer and the video board all have it at once — with or without signal.">
+<meta name="theme-color" content="#0E0D0C">
+<link rel="canonical" href="https://kinexjudging.com/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kinex Judging">
+<meta property="og:title" content="Kinex Judging">
+<meta property="og:description" content="Rough stock judging software. Judges send one mark from a phone at the chutes; the secretary, the announcer and the video board all have it at once — with or without signal.">
+<meta property="og:url" content="https://kinexjudging.com/">
+<meta property="og:image" content="https://kinexjudging.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kinex Judging">
+<meta name="twitter:description" content="Rough stock judging software. Judges send one mark from a phone at the chutes; the secretary, the announcer and the video board all have it at once — with or without signal.">
+<meta name="twitter:image" content="https://kinexjudging.com/og.png">
+
+<title>Kinex Judging</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+</head>
+<body>
+<style>
+  /*
+    Kinex Judging — the page a rodeo producer lands on.
+
+    Single theme on purpose. The product is used in an arena after dark on a
+    laptop in a plywood booth, and it is built dark for that reason; a light
+    version of this page would be a different product's site. Every colour is
+    painted explicitly so the page holds whatever ground it is dropped onto.
+
+    The palette is the app's own tokens, not a set invented for marketing —
+    the site and the software should look like one thing.
+  */
+  :root {
+    --ink: #0E0D0C;
+    --surface: #171512;
+    --raised: #1F1C18;
+    --pressed: #2A2621;
+    --line: #302B25;
+    --line-strong: #453E35;
+
+    --text: #F6F1E7;
+    --muted: #A2988A;
+    --faint: #6B6459;
+
+    /* Saddle copper. The one colour that means "act". */
+    --brand: #C4622B;
+    --brand-soft: #2C1A0F;
+    --brand-line: #6A3717;
+
+    /* Brass. Scores and standings only — never a button, never a heading. */
+    --gold: #DFA83C;
+    --gold-soft: #2B2113;
+
+    --good: #4E9B6C;
+    --good-soft: #14251A;
+    --warn: #D9A441;
+    --bad: #C9483C;
+    --bad-soft: #2A1412;
+
+    --display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+    --gutter: clamp(20px, 5vw, 64px);
+    --measure: 62ch;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--text);
+    font-family: var(--display);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── shared type ─────────────────────────────────────────────────────── */
+
+  h1, h2, h3 { margin: 0; text-wrap: balance; font-weight: 800; letter-spacing: -0.02em; }
+  h1 { font-size: clamp(2.2rem, 5.4vw, 4rem); line-height: 1.02; }
+  h2 { font-size: clamp(1.6rem, 3.2vw, 2.4rem); line-height: 1.1; }
+  h3 { font-size: 1.06rem; font-weight: 700; letter-spacing: -0.01em; }
+  p { margin: 0; }
+
+  a { color: var(--brand); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--text); }
+  :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 3px; }
+
+  /* The label voice, used for every eyebrow and column head — the same one
+     the app uses, so the two read as the same product. */
+  .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .label.copper { color: var(--brand); }
+
+  .lede { font-size: clamp(1.05rem, 1.9vw, 1.25rem); color: var(--muted); max-width: var(--measure); }
+
+  .wrap { max-width: 1180px; margin-inline: auto; padding-inline: var(--gutter); }
+
+  /* Sections space themselves with padding only — no sibling margins to
+     collapse into each other. */
+  section { padding-block: clamp(56px, 9vw, 108px); }
+  section + section { border-top: 1px solid var(--line); }
+
+  /* ── the bar ─────────────────────────────────────────────────────────── */
+
+  header.bar {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--ink) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 62px; }
+  .wordmark { display: inline-flex; align-items: center; gap: 11px; color: var(--text); text-decoration: none; }
+  .wordmark .words { display: flex; flex-direction: column; line-height: 1; }
+  .wordmark .name { font-size: 17px; font-weight: 800; letter-spacing: 0.06em; }
+  .wordmark .sub {
+    font-family: var(--mono);
+    font-size: 9px; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--muted); margin-top: 4px;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 17px; border-radius: 7px;
+    font-size: 14.5px; font-weight: 700; letter-spacing: 0.01em;
+    text-decoration: none; border: 1px solid transparent;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .btn.primary { background: var(--brand); color: #fff; }
+  .btn.primary:hover { background: #d46f34; color: #fff; }
+  .btn.ghost { border-color: var(--line-strong); color: var(--text); }
+  .btn.ghost:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-soft); }
+  .topnav { display: flex; align-items: center; gap: 22px; }
+  .topnav a { color: var(--muted); text-decoration: none; font-size: 14.5px; font-weight: 600; }
+  .topnav a:hover { color: var(--text); }
+  .topnav a.btn { color: #fff; }
+  @media (max-width: 640px) { .topnav a:not(.btn) { display: none; } }
+
+  /* ── hero ────────────────────────────────────────────────────────────── */
+
+  .hero { padding-top: clamp(44px, 7vw, 82px); padding-bottom: clamp(48px, 8vw, 96px); }
+  .hero-grid {
+    display: grid; gap: clamp(36px, 5vw, 60px);
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  @media (min-width: 1000px) {
+    .hero-grid { grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); }
+  }
+  .hero-copy { display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--brand);
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; padding-top: 4px; }
+
+  .facts { display: flex; flex-wrap: wrap; gap: 10px 26px; padding-top: 8px; }
+  .facts span { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+  .facts span::before { content: "—"; color: var(--brand); margin-right: 8px; }
+
+  /* ── the board panel, rebuilt ────────────────────────────────────────── */
+
+  .board {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 26px 70px -30px rgba(0,0,0,.9);
+  }
+  .board-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    padding: 11px 16px; border-bottom: 1px solid var(--line);
+    background: var(--raised);
+  }
+  .board-body { padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+
+  .rider { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+  .rider-name { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.05; }
+  .rider-from { font-size: 13px; color: var(--muted); margin-top: 3px; }
+
+  .readouts { display: flex; align-items: flex-start; gap: 22px; flex-shrink: 0; }
+  .readout { text-align: right; }
+  .readout .val {
+    font-family: var(--mono); font-variant-numeric: tabular-nums;
+    font-size: clamp(1.7rem, 3.4vw, 2.3rem); font-weight: 600; line-height: 1;
+    margin-top: 5px; display: block;
+  }
+  .readout.clock .val { color: var(--text); }
+  .readout.clock.urgent .val { color: var(--warn); }
+  .readout.clock.out .val { color: var(--bad); }
+  .readout.out-of .val { color: var(--muted); }
+
+  .stock {
+    background: var(--raised); border: 1px solid var(--line);
+    border-radius: 8px; padding: 11px 14px;
+  }
+  .stock .nm { font-weight: 700; font-size: 15.5px; }
+  .stock .co { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+  .judges { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .judge {
+    border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 13px 12px; background: var(--raised);
+    transition: border-color .3s ease, background-color .3s ease;
+  }
+  .judge.in { border-color: color-mix(in srgb, var(--good) 55%, var(--line)); background: var(--good-soft); }
+  .judge .mk {
+    font-family: var(--mono); font-variant-numeric: tabular-nums;
+    font-size: 1.5rem; font-weight: 600; margin-top: 6px; line-height: 1;
+  }
+  .judge .mk.waiting { color: var(--faint); font-size: 1rem; font-style: italic; }
+
+  .total {
+    border: 1px solid var(--line); border-radius: 8px;
+    padding: 12px 14px 14px; background: var(--raised);
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+    transition: border-color .3s ease, background-color .3s ease;
+  }
+  .total.done { border-color: color-mix(in srgb, var(--gold) 45%, var(--line)); background: var(--gold-soft); }
+  .total .fig {
+    font-family: var(--mono); font-variant-numeric: tabular-nums;
+    font-size: clamp(2rem, 4.6vw, 2.9rem); font-weight: 600; line-height: 1; margin-top: 7px;
+  }
+  .total.done .fig { color: var(--gold); }
+  .total .of { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+
+  .rowbtns { display: flex; flex-wrap: wrap; gap: 8px; }
+  .fake {
+    font-size: 12.5px; font-weight: 600; padding: 7px 12px; border-radius: 6px;
+    border: 1px solid var(--line-strong); color: var(--muted);
+  }
+  .fake.bad { border-color: color-mix(in srgb, var(--bad) 50%, var(--line)); color: var(--bad); background: var(--bad-soft); }
+  .fake.warn { border-color: color-mix(in srgb, var(--warn) 45%, var(--line)); color: var(--warn); }
+
+  /* The one moving thing on the page: a mark landing. */
+  @keyframes land {
+    0%   { opacity: 0; transform: translateY(7px); }
+    100% { opacity: 1; transform: none; }
+  }
+  .landing { animation: land .34s ease-out both; }
+
+  .livedot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--good); flex-shrink: 0;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--good) 70%, transparent);
+    animation: pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--good) 60%, transparent); }
+    70%  { box-shadow: 0 0 0 7px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .landing { animation: none; }
+    .livedot { animation: none; }
+    * { scroll-behavior: auto !important; }
+  }
+
+  /* ── the three screens ───────────────────────────────────────────────── */
+
+  .flow { display: grid; gap: 18px; grid-template-columns: 1fr; margin-top: 40px; }
+  @media (min-width: 860px) { .flow { grid-template-columns: repeat(3, 1fr); gap: 0; } }
+
+  .step { position: relative; padding: 22px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+  @media (min-width: 860px) {
+    .step { border-radius: 0; border-left-width: 0; }
+    .step:first-child { border-left-width: 1px; border-radius: 10px 0 0 10px; }
+    .step:last-child { border-radius: 0 10px 10px 0; }
+  }
+  .step .n {
+    font-family: var(--mono); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; color: var(--brand);
+  }
+  .step h3 { margin-top: 12px; }
+  .step p { margin-top: 9px; color: var(--muted); font-size: 15px; }
+
+  /* ── capability grid ─────────────────────────────────────────────────── */
+
+  .cards { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 40px; }
+  @media (min-width: 720px) { .cards { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1040px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+
+  .card {
+    border: 1px solid var(--line); border-radius: 10px; padding: 20px;
+    background: var(--surface); display: flex; flex-direction: column; gap: 9px;
+    transition: border-color .18s ease;
+  }
+  .card:hover { border-color: var(--line-strong); }
+  .card p { color: var(--muted); font-size: 14.5px; line-height: 1.55; }
+  .card .tag { align-self: flex-start; }
+
+  /* ── vmix ─────────────────────────────────────────────────────────────── */
+
+  .split { display: grid; gap: clamp(28px, 4vw, 52px); grid-template-columns: 1fr; align-items: start; }
+  @media (min-width: 940px) { .split { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
+
+  .ways { display: flex; flex-direction: column; gap: 12px; margin-top: 26px; }
+  .way {
+    display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start;
+    border: 1px solid var(--line); border-radius: 9px; padding: 15px 17px; background: var(--surface);
+  }
+  .way .k {
+    font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--brand);
+    border: 1px solid var(--brand-line); background: var(--brand-soft);
+    border-radius: 5px; padding: 2px 8px; margin-top: 2px;
+  }
+  .way h3 { font-size: 15.5px; }
+  .way p { color: var(--muted); font-size: 14.5px; margin-top: 5px; }
+
+  /* A small stand-in for the overlay as it sits on a video board. */
+  .overlay-demo {
+    border: 1px solid var(--line); border-radius: 11px; overflow: hidden;
+    background:
+      linear-gradient(160deg, #2b2a27 0%, #1a1917 40%, #26221d 100%);
+    aspect-ratio: 16 / 9; position: relative; display: flex; align-items: flex-end;
+    padding: 20px;
+  }
+  .overlay-demo::before {
+    content: "JUMBOTRON"; position: absolute; top: 12px; right: 14px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: .2em; color: #5c564d;
+  }
+  .lower-third {
+    background: color-mix(in srgb, var(--ink) 82%, transparent);
+    border-left: 4px solid var(--brand);
+    border-radius: 4px; padding: 12px 18px; width: 100%;
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    backdrop-filter: blur(3px);
+  }
+  .lower-third .who { font-size: clamp(1rem, 2.4vw, 1.5rem); font-weight: 800; letter-spacing: -0.02em; }
+  .lower-third .sub2 { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .lower-third .sc {
+    font-family: var(--mono); font-variant-numeric: tabular-nums;
+    font-size: clamp(1.5rem, 3.4vw, 2.2rem); font-weight: 600; color: var(--gold); line-height: 1;
+  }
+
+  /* ── tenancy ─────────────────────────────────────────────────────────── */
+
+  .two-up { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 34px; }
+  @media (min-width: 780px) { .two-up { grid-template-columns: 1fr auto 1fr; align-items: center; } }
+  .co-box { border: 1px solid var(--line); border-radius: 10px; padding: 20px; background: var(--surface); }
+  .co-box .nm { font-weight: 800; font-size: 1.05rem; }
+  .co-box .rd { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .co-box ul { margin: 13px 0 0; padding-left: 17px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+  .wall {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--faint);
+    text-align: center; padding: 10px; white-space: nowrap;
+  }
+  @media (min-width: 780px) {
+    .wall { writing-mode: vertical-rl; padding: 26px 10px; border-left: 1px dashed var(--line-strong); border-right: 1px dashed var(--line-strong); }
+  }
+
+  /* ── licence ─────────────────────────────────────────────────────────── */
+
+  .licence-points { display: flex; flex-direction: column; gap: 14px; margin-top: 26px; }
+  .lp { display: grid; grid-template-columns: 20px 1fr; gap: 13px; align-items: start; }
+  .lp .tick { color: var(--brand); font-family: var(--mono); font-size: 15px; line-height: 1.5; }
+  .lp p { color: var(--muted); font-size: 15px; }
+  .lp strong { color: var(--text); font-weight: 700; }
+
+  /* ── contact ─────────────────────────────────────────────────────────── */
+
+  .cta-box {
+    border: 1px solid var(--brand-line); background: linear-gradient(180deg, var(--brand-soft), var(--surface) 70%);
+    border-radius: 14px; padding: clamp(28px, 4.5vw, 48px);
+    display: flex; flex-direction: column; gap: 18px; align-items: flex-start;
+  }
+  .cta-box h2 { max-width: 20ch; }
+  .mailto { font-family: var(--mono); font-size: clamp(1rem, 2.4vw, 1.3rem); font-weight: 500; }
+
+  footer { border-top: 1px solid var(--line); padding-block: 34px; }
+  .foot { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; }
+  .foot p { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+
+  .note {
+    margin-top: 30px; border-left: 2px solid var(--line-strong); padding-left: 16px;
+    color: var(--faint); font-size: 14px; max-width: var(--measure);
+  }
+
+  /* ── on a phone ──────────────────────────────────────────────────────── */
+  /*
+    The board panel is the one thing here with a genuinely fixed shape — a
+    name, a clock and an out number all wanting the same row. Below 520px it
+    stops competing for that row and stacks, which is also how the real board
+    behaves on a small screen.
+  */
+  @media (max-width: 520px) {
+    .rider { flex-direction: column; gap: 14px; }
+    .readouts { gap: 28px; }
+    .readout { text-align: left; }
+    .judges { grid-template-columns: 1fr; }
+    .lower-third { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .bar .wrap { height: 56px; }
+    /* Long enough to need the room; short enough that wrapping reads fine. */
+    .wall { white-space: normal; }
+  }
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="wordmark" href="#top">
+      <svg width="27" height="27" viewBox="0 0 100 100" fill="none" aria-hidden="true" style="display:block;flex-shrink:0">
+        <path d="M22 16 V84" stroke="#C4622B" stroke-width="16" stroke-linecap="round"/>
+        <path d="M44 50 L78 18" stroke="#F6F1E7" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M44 50 L78 82" stroke="#F6F1E7" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="words">
+        <span class="name">KINEX</span>
+        <span class="sub">Judging</span>
+      </span>
+    </a>
+    <nav class="topnav">
+      <a href="#how">How it works</a>
+      <a href="https://play.google.com/store/apps/details?id=com.kinexjudging.judge">Judges&rsquo; app</a>
+      <a href="#contact">Get in touch</a>
+      <a class="btn primary" href="/download/">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ── hero ──────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="label copper">Rough stock judging</span>
+        <h1>The mark leaves the judge's hand and it's <em>already on the board</em>.</h1>
+        <p class="lede">
+          Judges send one mark from a phone at the chutes. The secretary watches it land,
+          the announcer reads it off, and the video board carries it — the same number,
+          at the same moment, whether or not the wifi is holding up.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="/download/">Download Kinex</a>
+          <a class="btn ghost" href="#contact">See it at your next rodeo</a>
+        </div>
+        <div class="facts">
+          <span>Rough stock, timed events, bullfighting, bull teams</span>
+          <span>Judges on their own phones</span>
+          <span>Keeps working with no signal</span>
+        </div>
+      </div>
+
+      <!-- The product, not a picture of it. This is the office board's
+           in-the-chute panel, running. -->
+      <div class="board" id="demo" aria-label="The office board, with a contestant in the chute">
+        <div class="board-head">
+          <span class="label">In the chute · Saddle Bronc</span>
+          <span class="label" style="display:flex;align-items:center;gap:7px">
+            <span class="livedot"></span>Live
+          </span>
+        </div>
+        <div class="board-body">
+          <div class="rider">
+            <div>
+              <div class="rider-name">Emiliano Vargas</div>
+              <div class="rider-from">Las Cruces, NM</div>
+            </div>
+            <div class="readouts">
+              <div class="readout clock" id="clockBox">
+                <span class="label" id="clockLabel">Chute</span>
+                <span class="val" id="clockVal">30</span>
+              </div>
+              <div class="readout out-of">
+                <span class="label">Out</span>
+                <span class="val">3</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stock">
+            <div class="nm">Painted Sky</div>
+            <div class="co">Sankey Pro Rodeo</div>
+          </div>
+
+          <div class="judges">
+            <div class="judge" id="j1">
+              <span class="label">Judge 1</span>
+              <div class="mk waiting" id="m1">waiting…</div>
+            </div>
+            <div class="judge" id="j2">
+              <span class="label">Judge 2</span>
+              <div class="mk waiting" id="m2">waiting…</div>
+            </div>
+          </div>
+
+          <div class="total" id="totalBox">
+            <div>
+              <span class="label" id="totalLabel">No marks yet</span>
+              <div class="fig" id="totalVal">—</div>
+            </div>
+            <span class="of">out of 100</span>
+          </div>
+
+          <div class="rowbtns">
+            <span class="fake bad">Bucked off — no score</span>
+            <span class="fake warn">Reride</span>
+            <span class="fake">Turn out</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── what it replaces ──────────────────────────────────────────────── -->
+  <section>
+    <div class="wrap">
+      <span class="label copper">The problem</span>
+      <h2 style="margin-top:14px;max-width:18ch">Right now that mark travels by hand signal.</h2>
+      <p class="lede" style="margin-top:20px">
+        A judge holds up fingers, or hollers it across the arena, or writes it on a card that
+        walks to the booth between sections. The secretary hears it wrong, the announcer reads
+        a number that changes ten minutes later, and the video board is always a ride behind.
+        None of that is anybody's fault — there has never been a way to send it.
+      </p>
+      <p class="lede" style="margin-top:16px">
+        Kinex is that way. Nothing about how your judges mark changes. What changes is that
+        the number arrives.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── the three screens ─────────────────────────────────────────────── -->
+  <section id="how">
+    <div class="wrap">
+      <span class="label copper">How it works</span>
+      <h2 style="margin-top:14px">Three screens, one number.</h2>
+      <p class="lede" style="margin-top:18px">
+        A mark makes one trip. These are the three places it shows up, in the order it gets there.
+      </p>
+
+      <!-- Numbered because it genuinely is a sequence: the mark moves through
+           these in order. -->
+      <div class="flow">
+        <div class="step">
+          <div class="n">FIRST</div>
+          <h3>The judge's phone</h3>
+          <p>
+            Whoever the office has loaded is already on screen — name, hometown, animal,
+            contractor. The judge taps one mark on a keypad, decimals and all, and sends it.
+            No paperwork, no scrolling to find the right rider.
+          </p>
+        </div>
+        <div class="step">
+          <div class="n">THEN</div>
+          <h3>The office board</h3>
+          <p>
+            The secretary sees each judge's mark land as it comes in, and the total the moment
+            the last one is there. Every event has its own tab, with the field, the rerides and
+            a live leaderboard underneath.
+          </p>
+        </div>
+        <div class="step">
+          <div class="n">AND</div>
+          <h3>The video board</h3>
+          <p>
+            The contestant, the score, the chute clock and the leaderboard go straight to vMix —
+            so the jumbotron shows the same number the secretary is looking at, without anyone
+            typing it twice.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── the real-world things ─────────────────────────────────────────── -->
+  <section>
+    <div class="wrap">
+      <span class="label copper">Built for the way rodeos actually run</span>
+      <h2 style="margin-top:14px;max-width:22ch">The parts that only matter once you're at one.</h2>
+
+      <div class="cards">
+        <div class="card">
+          <span class="label tag" style="color:var(--good)">No signal needed</span>
+          <h3>Arena wifi will drop. It doesn't matter.</h3>
+          <p>
+            Every phone holds the whole day sheet. When the signal goes, judges keep marking —
+            the marks queue up on the phone with the time they were made and send themselves the
+            moment it comes back. A mark is never lost, and a late one never overwrites a correction.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="label tag copper">Chute clock</span>
+          <h3>For the ones taking too long.</h3>
+          <p>
+            Set it anywhere from 15 to 60 seconds. A judge starts it from the floor and it appears
+            at once on the secretary's board, the announcer's screen and the video board — the same
+            count on every one. It stops at zero rather than running on.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="label tag" style="color:var(--warn)">Rerides</span>
+          <h3>Awarded, parked, and brought back.</h3>
+          <p>
+            A reride moves the contestant into their own section on that event with the reason
+            attached. When they nod on the reride animal, one press puts them back in the chute for
+            a score or a no-score like anybody else.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="label tag">Called from the floor</span>
+          <h3>Buck-offs, no-scores, turn-outs.</h3>
+          <p>
+            A judge raises it from their phone and it lands on the office board with their name on
+            it. The secretary commits it. Two judges don't always agree, and what's happening behind
+            the chutes isn't visible from the arena floor — so the office has the last word.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="label tag">When a phone dies</span>
+          <h3>The secretary can key it in.</h3>
+          <p>
+            Any judge's mark can be entered from the office, and it's recorded as having come from
+            the office rather than the phone. A dead battery in the middle of the bull riding does
+            not stop the rodeo.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="label tag" style="color:var(--gold)">Afterwards</span>
+          <h3>The full sheet, downloaded.</h3>
+          <p>
+            When the event is over, pull the leaderboard as a spreadsheet with every judge's own
+            mark beside the total — not just the score. Everyone entered is on it, including the
+            turn-outs and the no-scores.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="label tag" style="color:var(--gold)">The ride clock</span>
+          <h3>Eight seconds, and the horn.</h3>
+          <p>
+            A judge starts the ride clock from the phone when the gate opens; it runs on every
+            screen and the horn sounds from the office laptop, through your sound board, on the
+            second. Freestyle bullfighting counts down with a warning horn. The office can
+            always start and stop it from the board.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="label tag" style="color:var(--gold)">Bull teams</span>
+          <h3>Riders and bulls, scored apart.</h3>
+          <p>
+            The bull team event is built in: each judge types the bull and the rider into
+            their own box, to the hundredth, one judge keys the ride time, and a rider who
+            bucks off is a zero while the bull still scores for its team. Riders and teams
+            are ranked as you go.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="label tag" style="color:var(--gold)">Timed events</span>
+          <h3>Off your arena timer, penalties by name.</h3>
+          <p>
+            Hook up the FarmTek and the time shows live on the board and lands on its own. A
+            barrel down, a broken barrier, a leg: one press each, added to the time, and
+            printed on the results. Day sheets come in from Kinex Entry as a file, and results
+            go back the same way.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── vmix ──────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="wrap split">
+      <div>
+        <span class="label copper">The video board</span>
+        <h2 style="margin-top:14px">It already speaks vMix.</h2>
+        <p class="lede" style="margin-top:18px">
+          Three ways in, because no two production trucks are set up the same. Use whichever
+          fits how you already build your show.
+        </p>
+
+        <div class="ways">
+          <div class="way">
+            <span class="k">1</span>
+            <div>
+              <h3>Browser overlay</h3>
+              <p>Point a vMix browser input at a URL. Transparent background, nothing to configure, on air in a minute.</p>
+            </div>
+          </div>
+          <div class="way">
+            <span class="k">2</span>
+            <div>
+              <h3>Data sources</h3>
+              <p>Feed your own titles from XML or JSON, so the graphics stay in your house style.</p>
+            </div>
+          </div>
+          <div class="way">
+            <span class="k">3</span>
+            <div>
+              <h3>Pushed on the beat</h3>
+              <p>Kinex drives vMix directly over its API — sets the text and pulls the overlay in the moment the score lands.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="overlay-demo">
+          <div class="lower-third">
+            <div>
+              <div class="who">Billy Joe Vandiver</div>
+              <div class="sub2">Stephenville, TX · Cold Deck · Sankey Pro Rodeo</div>
+            </div>
+            <div class="sc">85.5</div>
+          </div>
+        </div>
+        <p class="note" style="margin-top:18px">
+          Contestants, scores, the chute clock, no-score and reride cards, and the running
+          leaderboard are all available to the board.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── tenancy ───────────────────────────────────────────────────────── -->
+  <section>
+    <div class="wrap">
+      <span class="label copper">More than one rodeo</span>
+      <h2 style="margin-top:14px;max-width:24ch">Two companies, the same Saturday, no crossed wires.</h2>
+      <p class="lede" style="margin-top:18px">
+        Every rodeo belongs to the company running it. A judge signs in and sees that company's
+        day sheet and nothing else — not the other outfit's contestants, not their scores, not
+        that they exist at all.
+      </p>
+
+      <div class="two-up">
+        <div class="co-box">
+          <div class="nm">Sundance Stampede</div>
+          <div class="rd">Sundance, WY · Sep 4–6</div>
+          <ul>
+            <li>Their judges, their phones</li>
+            <li>Their board and video feeds</li>
+            <li>Their licence key</li>
+          </ul>
+        </div>
+        <div class="wall">NO WAY THROUGH</div>
+        <div class="co-box">
+          <div class="nm">Deadwood Rodeo Co.</div>
+          <div class="rd">Deadwood, SD · Sep 5–6</div>
+          <ul>
+            <li>Their judges, their phones</li>
+            <li>Their board and video feeds</li>
+            <li>Their licence key</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── licence ───────────────────────────────────────────────────────── -->
+  <section>
+    <div class="wrap split">
+      <div>
+        <span class="label copper">Owning it</span>
+        <h2 style="margin-top:14px">Licensed to your outfit.</h2>
+        <p class="lede" style="margin-top:18px">
+          A licence key, made out to your company for the term you buy. It lives on your laptop
+          and checks nothing over the internet. Download the program <a href="/download/">here</a>
+          once you have one.
+        </p>
+      </div>
+
+      <div class="licence-points">
+        <div class="lp">
+          <span class="tick">▸</span>
+          <p><strong>The key works offline.</strong> It never phones home to be checked. If the venue has no internet at all, the rodeo runs exactly the same.</p>
+        </div>
+        <div class="lp">
+          <span class="tick">▸</span>
+          <p><strong>Updates when we ship them.</strong> Your copy can check for new features and tell you what changed. You choose when to take them.</p>
+        </div>
+        <div class="lp">
+          <span class="tick">▸</span>
+          <p><strong>It will not lock you out mid-rodeo.</strong> Whatever a licence says about how many rodeos or judges you have, scoring never stops. A billing question is not worth a stopped bull riding.</p>
+        </div>
+        <div class="lp">
+          <span class="tick">▸</span>
+          <p><strong>Try it on a real one.</strong> Ask for a trial key and run a rodeo start to finish before you decide.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── contact ───────────────────────────────────────────────────────── -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta-box">
+        <span class="label copper">Get in touch</span>
+        <h2>Tell us about your rodeo and we'll show you the board.</h2>
+        <p class="lede">
+          How many judges you run, what you're using for video, and when your next one is.
+          That's enough to get started.
+        </p>
+        <a class="btn primary mailto" href="mailto:info@kinexjudging.com">info@kinexjudging.com</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <p>Kinex Judging · <a href="/download/">Download</a> · <a href="https://play.google.com/store/apps/details?id=com.kinexjudging.judge">Judges&rsquo; app</a> · <a href="/getting-started.pdf">Getting Started</a> · <a href="/privacy/">Privacy</a> · <a href="mailto:info@kinexjudging.com">info@kinexjudging.com</a></p>
+    <p>Rodeo judging, from the arena floor to the front of house.</p>
+  </div>
+</footer>
+
+<script>
+  /*
+    The hero board, running.
+
+    A loop of the moment the product exists for: somebody in the chute with the
+    clock going, the first judge's mark landing, then the second, then the score.
+    The numbers are the real ones from a two-judge saddle bronc — each judge
+    marks stock and rider together out of 50, and the two add to 100.
+  */
+  (function () {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const clockBox = document.getElementById("clockBox");
+    const clockVal = document.getElementById("clockVal");
+    const clockLabel = document.getElementById("clockLabel");
+    const j1 = document.getElementById("j1"), m1 = document.getElementById("m1");
+    const j2 = document.getElementById("j2"), m2 = document.getElementById("m2");
+    const totalBox = document.getElementById("totalBox");
+    const totalVal = document.getElementById("totalVal");
+    const totalLabel = document.getElementById("totalLabel");
+
+    const MARK_1 = 43.5, MARK_2 = 42.75;
+
+    function mark(el, value) {
+      el.textContent = String(value);
+      el.classList.remove("waiting");
+      el.classList.add("landing");
+    }
+
+    function settled() {
+      // Where the loop ends up, and the whole state for anyone who has asked
+      // not to see motion.
+      clockLabel.textContent = "Chute";
+      clockVal.textContent = "—";
+      clockBox.className = "readout clock";
+      j1.classList.add("in"); mark(m1, MARK_1);
+      j2.classList.add("in"); mark(m2, MARK_2);
+      totalBox.classList.add("done");
+      totalLabel.textContent = "Score";
+      totalVal.textContent = "86.25";
+      totalVal.classList.add("landing");
+    }
+
+    if (reduced) { settled(); return; }
+
+    let timers = [];
+    let ticker = null;
+    const at = (ms, fn) => timers.push(setTimeout(fn, ms));
+
+    /** Everything this loop has running, stopped. */
+    function stop() {
+      timers.forEach(clearTimeout);
+      timers = [];
+      if (ticker !== null) { clearInterval(ticker); ticker = null; }
+    }
+
+    function reset() {
+      stop();
+      clockLabel.textContent = "Chute";
+      clockBox.className = "readout clock";
+      clockVal.textContent = "30";
+      j1.className = "judge"; m1.className = "mk waiting"; m1.textContent = "waiting…";
+      j2.className = "judge"; m2.className = "mk waiting"; m2.textContent = "waiting…";
+      totalBox.className = "total";
+      totalLabel.textContent = "No marks yet";
+      totalVal.className = "fig";
+      totalVal.textContent = "—";
+    }
+
+    function run() {
+      reset();
+
+      // The clock, counting the way the real one does — whole seconds down to
+      // ten, then tenths, then it stops rather than going negative.
+      let left = 30;
+      ticker = setInterval(() => {
+        left -= 1;
+        if (left <= 0) { clearInterval(ticker); ticker = null; return; }
+        clockVal.textContent = String(left);
+        clockBox.className = left <= 8 ? "readout clock urgent" : "readout clock";
+      }, 190);
+
+      // He nods. The clock clears and the marks come in.
+      at(6200, () => {
+        if (ticker !== null) { clearInterval(ticker); ticker = null; }
+        clockVal.textContent = "—";
+        clockBox.className = "readout clock";
+      });
+      at(6900, () => {
+        j1.classList.add("in");
+        mark(m1, MARK_1);
+        totalLabel.textContent = "Partial — waiting on 1";
+        totalVal.textContent = String(MARK_1);
+        totalVal.classList.add("landing");
+      });
+      at(8600, () => {
+        j2.classList.add("in");
+        mark(m2, MARK_2);
+        totalBox.classList.add("done");
+        totalLabel.textContent = "Score";
+        totalVal.textContent = "86.25";
+        totalVal.classList.remove("landing");
+        void totalVal.offsetWidth; // restart the animation
+        totalVal.classList.add("landing");
+      });
+
+      at(14500, run);
+    }
+
+    // Only animate while it is actually on screen — a page left open in a
+    // background tab has no business running a timer.
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) run();
+        else stop();
+      }
+    }, { threshold: 0.25 });
+    io.observe(document.getElementById("demo"));
+  })();
+</script>
+</body>
+</html>
