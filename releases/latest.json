@@ -1,11 +1,11 @@
 {
-  "version": "0.14.1",
-  "released": "2026-10-05",
-  "notes": "Judges' phones: Start ride clock is a slab a quarter of the screen, and while the clock runs the whole yellow box is Stop, so neither needs a look at the phone. A tap in the first 0.7 seconds after Start is ignored, since it is the same thumb. The app's PIN screen has a Scan the office QR code button, and says which laptop it is talking to and which version it is.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.14.1",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.14.1/Kinex-Judging-0.14.1-win64.zip",
-  "file": "Kinex-Judging-0.14.1-win64.zip",
-  "size": 66203057,
-  "sha256": "d389f7fe5dbbc1611a8e312e1d7e07c2b4d2fc9c7d7333f9535815948c1d067b",
-  "signature": "k1LoqwsvCDkUvkIAVYWiGrcLHALlHKOsaUH36-iTba36lwBY4gB2I6gJPyB6zHVPFY0WyiTXv-6hkTtG9exaAQ"
+  "version": "0.14.2",
+  "released": "2026-10-07",
+  "notes": "Setup: each event's settings sit in titled rows — Rounds, Judging, Marks and the board, Clocks and the horn, and Bull team — with every box lined up, one-line labels and the explanation on hover. The website at www.kinexjudging.com is updated with every release.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.14.2",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.14.2/Kinex-Judging-0.14.2-win64.zip",
+  "file": "Kinex-Judging-0.14.2-win64.zip",
+  "size": 66203834,
+  "sha256": "f3374098f58afe71033cf5bff32d3de9d0b86157c9908e01f3cd5ac4b1201994",
+  "signature": "k_WxKeCik4KolsE-BTWyi9ow4YeeWYy6e8rFQAYEiJcmRqrtA9RyrIFlLP7KwP5PUXuQbp2YvfOs5u-26jLaDA"
 }
