@@ -1,11 +1,11 @@
 {
-  "version": "0.14.2",
-  "released": "2026-10-07",
-  "notes": "Setup: each event's settings sit in titled rows — Rounds, Judging, Marks and the board, Clocks and the horn, and Bull team — with every box lined up, one-line labels and the explanation on hover. The website at www.kinexjudging.com is updated with every release.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.14.2",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.14.2/Kinex-Judging-0.14.2-win64.zip",
-  "file": "Kinex-Judging-0.14.2-win64.zip",
-  "size": 66203834,
-  "sha256": "f3374098f58afe71033cf5bff32d3de9d0b86157c9908e01f3cd5ac4b1201994",
-  "signature": "k_WxKeCik4KolsE-BTWyi9ow4YeeWYy6e8rFQAYEiJcmRqrtA9RyrIFlLP7KwP5PUXuQbp2YvfOs5u-26jLaDA"
+  "version": "0.14.3",
+  "released": "2026-10-08",
+  "notes": "Roster import: when Kinex Entry's whole-day sheet has several events on it, pick the one to import.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.14.3",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.14.3/Kinex-Judging-0.14.3-win64.zip",
+  "file": "Kinex-Judging-0.14.3-win64.zip",
+  "size": 66204760,
+  "sha256": "80aeb62fc8fd503f6758e9551608016994079f5c1f610acd1396d5ade0e861ee",
+  "signature": "WEfDYaNaERNfdJi48dxxvfPZ9dZ-EYS06-9KrUHEIhMc9qi5CZREWrnXFH16ZfOa0qR_6xR9c_YGaCVt6izaAg"
 }
