@@ -1,11 +1,11 @@
 {
-  "version": "0.14.3",
-  "released": "2026-10-08",
-  "notes": "Roster import: when Kinex Entry's whole-day sheet has several events on it, pick the one to import.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.14.3",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.14.3/Kinex-Judging-0.14.3-win64.zip",
-  "file": "Kinex-Judging-0.14.3-win64.zip",
-  "size": 66204760,
-  "sha256": "80aeb62fc8fd503f6758e9551608016994079f5c1f610acd1396d5ade0e861ee",
-  "signature": "WEfDYaNaERNfdJi48dxxvfPZ9dZ-EYS06-9KrUHEIhMc9qi5CZREWrnXFH16ZfOa0qR_6xR9c_YGaCVt6izaAg"
+  "version": "0.14.4",
+  "released": "2026-10-09",
+  "notes": "Stream Deck: Kinex Judging keys for an Elgato Stream Deck — Confirm score or time, One, Two and Three Barrels, Broken Barrier, One Leg, and Clear penalties — each key showing what is in the chute. One sign-in shared by every key. The plugin is on the Download page under For the production desk.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.14.4",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.14.4/Kinex-Judging-0.14.4-win64.zip",
+  "file": "Kinex-Judging-0.14.4-win64.zip",
+  "size": 66204783,
+  "sha256": "f9cfcca8c9c8d8df72c67bb4fb30d6ae782b49de1287745ffe80182e8ad9af24",
+  "signature": "mw04_78fRJ_r2LsqIK_FEc4WKZqJsZEwQgA37sL38Lh_HShz2m0IPy5ZyLNXJmSLETslkInLbVgi3ZIWF7K4BA"
 }
