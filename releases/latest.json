@@ -1,11 +1,11 @@
 {
-  "version": "0.14.5",
+  "version": "0.14.6",
   "released": "2026-10-24",
-  "notes": "Judge phones as kiosks: a phone made Kinex's own over a cable (Set up a judge phone.cmd in the kit) powers on into the PIN screen; Home, Back and Recents do nothing; the office leaves by holding the bar at the foot of the screen for three seconds and giving the exit password, which opens a maintenance screen for wifi, a different laptop, or releasing the phone. The phone app is on the Download page for the setup program; judges on their own phones see no change.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.14.5",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.14.5/Kinex-Judging-0.14.5-win64.zip",
-  "file": "Kinex-Judging-0.14.5-win64.zip",
-  "size": 66211287,
-  "sha256": "56a45e6adb98800afbc9944add32c097492a62b074f067ee50bc1b8d320f7553",
-  "signature": "QqebLo9pWazteRciwxlNUrGOOmk_jeNTvpcFFbD4ZXrwFBQ6z2S5vLsT22j7kES8GIpbX1Sz3lTNm9snjh70CQ"
+  "notes": "Kiosk phones: the hold-to-exit bar is on the Connect screen too, which is where a freshly made-up phone starts; the setup program reads the phone's answers properly and says what to do next. The phone app on the Download page is the corrected build.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.14.6",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.14.6/Kinex-Judging-0.14.6-win64.zip",
+  "file": "Kinex-Judging-0.14.6-win64.zip",
+  "size": 66211365,
+  "sha256": "ced3bb3d564d0aada96a11556faf6ee700436a80b09777be199d5cc92d269a74",
+  "signature": "NN3J40814itQyafyUcrEq9EwvFtVdLr465uGY-iyBSHRdPq5ImNySpx6-wlOGkhEc2UT0Rs7fsZpgBu9whVoCQ"
 }
