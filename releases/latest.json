@@ -1,11 +1,11 @@
 {
-  "version": "0.14.6",
-  "released": "2026-10-24",
-  "notes": "Kiosk phones: the hold-to-exit bar is on the Connect screen too, which is where a freshly made-up phone starts; the setup program reads the phone's answers properly and says what to do next. The phone app on the Download page is the corrected build.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.14.6",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.14.6/Kinex-Judging-0.14.6-win64.zip",
-  "file": "Kinex-Judging-0.14.6-win64.zip",
-  "size": 66211365,
-  "sha256": "ced3bb3d564d0aada96a11556faf6ee700436a80b09777be199d5cc92d269a74",
-  "signature": "NN3J40814itQyafyUcrEq9EwvFtVdLr465uGY-iyBSHRdPq5ImNySpx6-wlOGkhEc2UT0Rs7fsZpgBu9whVoCQ"
+  "version": "0.14.7",
+  "released": "2026-11-09",
+  "notes": "Setup chooses who runs the ride clock on each rough-stock event: Kinex (phones and board, with the horn) or the FarmTek console. On a kit phone the volume keys start and stop the ride clock. The PIN lockout counts per phone and per PIN, so one judge's wrong tries never lock the rest out. Everybody tied at the short-round cut comes back, and the board says so. Marks from the phones are stamped with the laptop's time.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.14.7",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.14.7/Kinex-Judging-0.14.7-win64.zip",
+  "file": "Kinex-Judging-0.14.7-win64.zip",
+  "size": 66213219,
+  "sha256": "6432fa53c8c5e4fbd2a133d73b0a4830ae27136fd6d59db771137987c78df880",
+  "signature": "2IZX_S9WoE2rgSk8Miofp7PyGtC8COPgd9p6WbtQHmEDjJgMqrUTY8XM1CMQkKyk4iP7W_8xEh7QeiS3VgyUBQ"
 }
