@@ -1,11 +1,11 @@
 {
-  "version": "0.15.1",
-  "released": "2026-11-11",
-  "notes": "Checking for an update and downloading it now work through routers that are slow to answer some name lookups, the Kinex kit router among them. Before, the Licence page could time out on a good connection.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.15.1",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.15.1/Kinex-Judging-0.15.1-win64.zip",
-  "file": "Kinex-Judging-0.15.1-win64.zip",
-  "size": 66363955,
-  "sha256": "347ed60539b7ae444564c95bb1231b93d444a97abb2802d3cdce416a662db612",
-  "signature": "KPl4MlhvJ9QfniUEFHRuy78-GukwsaE4zR8C9waUsHdp6FTJFgMhNPt6powsisiR3tthetLvZS2MHUjISH91Bw"
+  "version": "0.16.0",
+  "released": "2026-11-13",
+  "notes": "New event: Rough Stock Only +/-. The judge types the stock score, taps +, Even or -, and types how many points the rider was above or below the stock; the phone works out the rider score and the total. Bareback, saddle bronc and bull riding can be marked the same way from Setup, under Format. The office board shows each judge's stock score and rider score, and the office can key both for a judge whose phone has died. Judge phones get the new screen by opening Kinex on a wifi with internet.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.16.0",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.16.0/Kinex-Judging-0.16.0-win64.zip",
+  "file": "Kinex-Judging-0.16.0-win64.zip",
+  "size": 66367254,
+  "sha256": "d4b92dce070772037289413400daf3dbb39d8fcff42d7fb42f5e5755b1988b0a",
+  "signature": "PSlWBQJKUVPPxBjWcAqECzHg0Ln1OgJq-fy0ArCbi6CLitPFYhQXpkJ0GqS2dLIYquL6HZB6FVn_wTQ_1v48Dw"
 }
