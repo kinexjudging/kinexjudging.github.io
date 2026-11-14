@@ -1,11 +1,11 @@
 {
-  "version": "0.16.0",
-  "released": "2026-11-13",
-  "notes": "New event: Rough Stock Only +/-. The judge types the stock score, taps +, Even or -, and types how many points the rider was above or below the stock; the phone works out the rider score and the total. Bareback, saddle bronc and bull riding can be marked the same way from Setup, under Format. The office board shows each judge's stock score and rider score, and the office can key both for a judge whose phone has died. Judge phones get the new screen by opening Kinex on a wifi with internet.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.16.0",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.16.0/Kinex-Judging-0.16.0-win64.zip",
-  "file": "Kinex-Judging-0.16.0-win64.zip",
-  "size": 66367254,
-  "sha256": "d4b92dce070772037289413400daf3dbb39d8fcff42d7fb42f5e5755b1988b0a",
-  "signature": "PSlWBQJKUVPPxBjWcAqECzHg0Ln1OgJq-fy0ArCbi6CLitPFYhQXpkJ0GqS2dLIYquL6HZB6FVn_wTQ_1v48Dw"
+  "version": "0.17.0",
+  "released": "2026-11-14",
+  "notes": "The office can now key one total for a trip even when the judges are on the phones: press Key the total instead under the judge boxes. The office's number stands, any mark a judge had sent for that trip is set aside, and the judges' phones show that the office has scored it. Take it off hands the trip back to the judges. Not offered in the Bull Team Event. Judge phones get the new screen by opening Kinex on a wifi with internet.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.17.0",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.17.0/Kinex-Judging-0.17.0-win64.zip",
+  "file": "Kinex-Judging-0.17.0-win64.zip",
+  "size": 66369272,
+  "sha256": "11cf02b70b1aeb7a4b42cd6d4d78baa77c8d9957935449521fb30a2a0e144eb9",
+  "signature": "gQ1DJpg9X5Sq2drakQRUARPDuspRPm_lljfsGy69T4g_n8aEOd1PZEE-v02H0I61cUOPRffgkz7hzEZjo9-NAg"
 }
