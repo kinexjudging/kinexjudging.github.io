@@ -1,11 +1,11 @@
 {
-  "version": "0.17.0",
+  "version": "0.18.0",
   "released": "2026-11-14",
-  "notes": "The office can now key one total for a trip even when the judges are on the phones: press Key the total instead under the judge boxes. The office's number stands, any mark a judge had sent for that trip is set aside, and the judges' phones show that the office has scored it. Take it off hands the trip back to the judges. Not offered in the Bull Team Event. Judge phones get the new screen by opening Kinex on a wifi with internet.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.17.0",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.17.0/Kinex-Judging-0.17.0-win64.zip",
-  "file": "Kinex-Judging-0.17.0-win64.zip",
-  "size": 66369272,
-  "sha256": "11cf02b70b1aeb7a4b42cd6d4d78baa77c8d9957935449521fb30a2a0e144eb9",
-  "signature": "gQ1DJpg9X5Sq2drakQRUARPDuspRPm_lljfsGy69T4g_n8aEOd1PZEE-v02H0I61cUOPRffgkz7hzEZjo9-NAg"
+  "notes": "Rough Stock Only +/-: a judge can mark Buck Off with the stock score - one judge's buck off makes the trip a no score, with a red warning on the phone before it is sent. vMix now carries each judge's stock score and rider score (StockScore, RiderScore, Judge1Stock, Judge1Rider and so on), with BO for the rider on a buck off.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.18.0",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.18.0/Kinex-Judging-0.18.0-win64.zip",
+  "file": "Kinex-Judging-0.18.0-win64.zip",
+  "size": 66372527,
+  "sha256": "3d1bc47cc21b11e3b34c267e6bab3390ae472cef527851ee05e155518004ed23",
+  "signature": "G9cqRxbYMb0may6AG2nLAhnzRbtxz_x-9cWmOmoZeUrsPQNam0AlBPsfsoVe7np6yTt4oqIMIAjUxAUdpXNxDw"
 }
