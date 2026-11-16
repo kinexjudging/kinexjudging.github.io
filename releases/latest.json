@@ -1,11 +1,11 @@
 {
-  "version": "0.18.0",
-  "released": "2026-11-14",
-  "notes": "Rough Stock Only +/-: a judge can mark Buck Off with the stock score - one judge's buck off makes the trip a no score, with a red warning on the phone before it is sent. vMix now carries each judge's stock score and rider score (StockScore, RiderScore, Judge1Stock, Judge1Rider and so on), with BO for the rider on a buck off.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.18.0",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.18.0/Kinex-Judging-0.18.0-win64.zip",
-  "file": "Kinex-Judging-0.18.0-win64.zip",
-  "size": 66372527,
-  "sha256": "3d1bc47cc21b11e3b34c267e6bab3390ae472cef527851ee05e155518004ed23",
-  "signature": "G9cqRxbYMb0may6AG2nLAhnzRbtxz_x-9cWmOmoZeUrsPQNam0AlBPsfsoVe7np6yTt4oqIMIAjUxAUdpXNxDw"
+  "version": "0.19.0",
+  "released": "2026-11-15",
+  "notes": "Short round: the draw is right when fewer riders qualify, and the office can set it by hand. Multi-round leaderboards show each qualified round beside the name. New announcer board and arena director's leader cards, with the chute clock on the office laptop's time. Each laptop remembers contestants and stock. One keypad on every score screen. Kiosk phones lock to the kit Wi-Fi and are updated from the office laptop, never over the internet - this version goes on the phones by cable.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.0",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.0/Kinex-Judging-0.19.0-win64.zip",
+  "file": "Kinex-Judging-0.19.0-win64.zip",
+  "size": 66460044,
+  "sha256": "827fbc113b305da68867f2eed6e3d0357e7e5384255e95eab263407ec87b0886",
+  "signature": "qbWa7zUYM0P4Suy3-snZmiDCDWo2t_ctoXjlUlHEBTxBQ9sx2ZLcC2S3B2KuevHT5rQJkN_JhOScrERY8IZgAA"
 }
