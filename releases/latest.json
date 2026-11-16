@@ -1,11 +1,11 @@
 {
-  "version": "0.19.0",
-  "released": "2026-11-15",
-  "notes": "Short round: the draw is right when fewer riders qualify, and the office can set it by hand. Multi-round leaderboards show each qualified round beside the name. New announcer board and arena director's leader cards, with the chute clock on the office laptop's time. Each laptop remembers contestants and stock. One keypad on every score screen. Kiosk phones lock to the kit Wi-Fi and are updated from the office laptop, never over the internet - this version goes on the phones by cable.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.0",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.0/Kinex-Judging-0.19.0-win64.zip",
-  "file": "Kinex-Judging-0.19.0-win64.zip",
-  "size": 66460044,
-  "sha256": "827fbc113b305da68867f2eed6e3d0357e7e5384255e95eab263407ec87b0886",
-  "signature": "qbWa7zUYM0P4Suy3-snZmiDCDWo2t_ctoXjlUlHEBTxBQ9sx2ZLcC2S3B2KuevHT5rQJkN_JhOScrERY8IZgAA"
+  "version": "0.19.1",
+  "released": "2026-11-16",
+  "notes": "Kiosk phones: fixes the false 'not on the Kinex wifi' banner on newer Android (reinstall the phone app by cable). Short round setup: the bull's name is the wide box and Brand / No. the small one. The board's Load / Turn out / Replace buttons stay inside their card on a laptop screen. Saved Names: a Duplicates button lists every name saved more than once with one-press merge, and a contestant or animal already saved is no longer saved a second time when entered again.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.1",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.1/Kinex-Judging-0.19.1-win64.zip",
+  "file": "Kinex-Judging-0.19.1-win64.zip",
+  "size": 66464166,
+  "sha256": "5bdcbca6c368ed49b80a88a0d56f3208cc384c9b410e3c2254e2c3c1dc4d1d74",
+  "signature": "hnI22LkkQw_nsQJV-FRge_omLHovJQp8vwQe7mQqnOBEjHuQWALxKLyU9tcBu1MKHEyylCi7RmM284EMRq1mDQ"
 }
