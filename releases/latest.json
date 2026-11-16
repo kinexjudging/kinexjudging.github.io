@@ -1,11 +1,11 @@
 {
-  "version": "0.19.2",
+  "version": "0.19.3",
   "released": "2026-11-16",
-  "notes": "Judge phones can now be updated from the office laptop over the kit wifi: this download carries the phone app, and Update phones on the Licence page sends it. Phones need this version put on once by cable first. On the phone, the judge's name shows in full across the top of the scoring screen.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.2",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.2/Kinex-Judging-0.19.2-win64.zip",
-  "file": "Kinex-Judging-0.19.2-win64.zip",
-  "size": 111067525,
-  "sha256": "c3c849864225d7bad8f81ce3cb411d5a0750ff97fd4b217696520391b62bc1b3",
-  "signature": "A70_ImmHG3Govp4fB2OYpCGvvZLLACLu5mKlZw5tVRlFHHUm145JQ9llpMFYfHNWN1Ip3H6_tP2QAciWU-3tCA"
+  "notes": "Judge phones: fixes signing out leaving a blank white screen (0.19.2). Update the laptop, then press Update phones on the Licence page while on the kit wifi.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.3",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.3/Kinex-Judging-0.19.3-win64.zip",
+  "file": "Kinex-Judging-0.19.3-win64.zip",
+  "size": 111068068,
+  "sha256": "0554ee0ce9f833b136ddcf5ec91c7749d30e643362e30f5911ceb210c7ba2db4",
+  "signature": "ScsZg-J1dJW2COq-nlk0v8_lt48WlrjJWncBzx-hHm725P_OxEXcO_ALSrRvbW4nnOVvIO1byIu0VUAtShwaCw"
 }
