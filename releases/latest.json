@@ -1,11 +1,11 @@
 {
-  "version": "0.19.4",
-  "released": "2026-11-16",
-  "notes": "Judge phones: the app now holds its own traffic to the kit wifi, so a phone with a SIM in it no longer loses the office laptop when the kit router has no internet. Update the laptop, then press Update phones on the Licence page while on the kit wifi.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.4",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.4/Kinex-Judging-0.19.4-win64.zip",
-  "file": "Kinex-Judging-0.19.4-win64.zip",
-  "size": 111067874,
-  "sha256": "2a8c563dbaf1a53dfed5b75591dfc02c578f010242178072974cde1665ba52f2",
-  "signature": "9JEKwKpg2m1ITMSO-XOmBbEbR2kgjoLHnA7mKqEusJkhqY13ExHzHhCRt2le6Fqf3q1UvVzZbPqKH5Tbnus0Cg"
+  "version": "0.19.5",
+  "released": "2026-11-21",
+  "notes": "Announcer screen fixes: both judges show, take-the-lead step, FarmTek blank until run and yellow, judge tiles aligned, Event leaders lists every event. Roster tabs. New ranch bronc events start at 2 judges.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.5",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.5/Kinex-Judging-0.19.5-win64.zip",
+  "file": "Kinex-Judging-0.19.5-win64.zip",
+  "size": 111068953,
+  "sha256": "efb13d6375a6b437809af31e6fabbb4fe5ec05bbb456f0b170c66da5948d1ca6",
+  "signature": "h1S_Al2cb--NQTKwCOHzr2MZMNNL330Xmwa0KPmWn5QZITxkZSKcPaTHjFAJVcoOLBmLjHMBch8GykJgSFh4BQ"
 }
