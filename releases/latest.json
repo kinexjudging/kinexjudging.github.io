@@ -1,11 +1,11 @@
 {
-  "version": "0.19.7",
+  "version": "0.19.8",
   "released": "2026-11-22",
-  "notes": "Ranch bronc always shows two judge boxes; bigger To Take the Lead box; Total flashes on final score; Broken Barrier button for judges on timed events except barrels",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.7",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.7/Kinex-Judging-0.19.7-win64.zip",
-  "file": "Kinex-Judging-0.19.7-win64.zip",
-  "size": 111073137,
-  "sha256": "a0a8c96aedc53efe0d7ff4d5311257e945cfd54d70ff17144be4c0ef29eac8a7",
-  "signature": "r_No_7--0ZSsaC6nXGDf1zN2fEDBsPOdGZRtneUsa7jZZ06bEBEme8AuphvVXoEnaDqJ_IghxxUFVz5-J6ktDA"
+  "notes": "Judge phone app 0.19.8 (build 24): Broken Barrier button on the judges' phones for timed events other than barrels. Push it to the kit phones from Licence > Update phones. Also carries the 0.19.7 announcer changes.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.8",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.8/Kinex-Judging-0.19.8-win64.zip",
+  "file": "Kinex-Judging-0.19.8-win64.zip",
+  "size": 111076934,
+  "sha256": "6066851f8c976f2e7a995cc7ace116aceed5b3003369249c81e3d13d3ef9f866",
+  "signature": "Awe0AdmMOVzUNOKK1UXRmTXSeSKuLP_krJbyq3l_EmzZ1T0Nb9sn1VN-S_zMydKT06GD_MMCJThxNbMavJH6Dw"
 }
