@@ -1,11 +1,11 @@
 {
-  "version": "0.19.6",
-  "released": "2026-11-21",
-  "notes": "An archived rodeo can no longer block an update; the chute message names the contestant, event and rodeo; archiving a rodeo clears its chute.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.6",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.6/Kinex-Judging-0.19.6-win64.zip",
-  "file": "Kinex-Judging-0.19.6-win64.zip",
-  "size": 111069312,
-  "sha256": "d53a08e88350151d17bc940c16c3d699c5b76cd229e26588889484235179cec2",
-  "signature": "6eq9L7aF4yQ4KN6epRTWVt88icDqWNkYXxOuce1QtNBpKyPm-KMkYyhioSBFulvBNfENUYYpDhruNBOSPYcfDg"
+  "version": "0.19.7",
+  "released": "2026-11-22",
+  "notes": "Ranch bronc always shows two judge boxes; bigger To Take the Lead box; Total flashes on final score; Broken Barrier button for judges on timed events except barrels",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.7",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.7/Kinex-Judging-0.19.7-win64.zip",
+  "file": "Kinex-Judging-0.19.7-win64.zip",
+  "size": 111073137,
+  "sha256": "a0a8c96aedc53efe0d7ff4d5311257e945cfd54d70ff17144be4c0ef29eac8a7",
+  "signature": "r_No_7--0ZSsaC6nXGDf1zN2fEDBsPOdGZRtneUsa7jZZ06bEBEme8AuphvVXoEnaDqJ_IghxxUFVz5-J6ktDA"
 }
