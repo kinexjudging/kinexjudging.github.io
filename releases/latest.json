@@ -1,11 +1,11 @@
 {
-  "version": "0.19.8",
-  "released": "2026-11-22",
-  "notes": "Judge phone app 0.19.8 (build 24): Broken Barrier button on the judges' phones for timed events other than barrels. Push it to the kit phones from Licence > Update phones. Also carries the 0.19.7 announcer changes.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.8",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.8/Kinex-Judging-0.19.8-win64.zip",
-  "file": "Kinex-Judging-0.19.8-win64.zip",
-  "size": 111076934,
-  "sha256": "6066851f8c976f2e7a995cc7ace116aceed5b3003369249c81e3d13d3ef9f866",
-  "signature": "Awe0AdmMOVzUNOKK1UXRmTXSeSKuLP_krJbyq3l_EmzZ1T0Nb9sn1VN-S_zMydKT06GD_MMCJThxNbMavJH6Dw"
+  "version": "0.19.9",
+  "released": "2026-11-27",
+  "notes": "Judge phone app 0.19.9 (build 25): announcer team-roping boards and event leaders show Header & Heeler; Contestant tile stacks HD:/HL: with hometowns lined up under each name; after adding a contestant, focus returns to the name field. Push it to the kit phones from Licence > Update phones.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.9",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.9/Kinex-Judging-0.19.9-win64.zip",
+  "file": "Kinex-Judging-0.19.9-win64.zip",
+  "size": 111077889,
+  "sha256": "98c20484f1a5eb55fe0a0faa1a93bac5db26136dc264c185d95483de32df9d08",
+  "signature": "UAaRyl1gmygbDhaghCzZ0hLjSws59nC2rioM8V3p5HN4h51oqQVuFEQdR1kAguSLeIyDwcdsIFTrpjC0yKDxAg"
 }
