@@ -1,11 +1,11 @@
 {
-  "version": "0.19.10",
+  "version": "0.19.11",
   "released": "2026-11-28",
-  "notes": "Judge phone app 0.19.10 (build 26): announcer Contestant tile shows earlier-round pills and a gold total in multi-round events; timed totals call out catch count (e.g. 7.1 (1 of 2)); average board labels on 2 / on 1 groups. Push it to the kit phones from Licence > Update phones.",
-  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.10",
-  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.10/Kinex-Judging-0.19.10-win64.zip",
-  "file": "Kinex-Judging-0.19.10-win64.zip",
-  "size": 111080744,
-  "sha256": "6a64d52a176fc04e03f4c8fc4119be904bf98d45d9584012083f909a966636df",
-  "signature": "XJSXiqG34ozdmvoWTm-QPoQ-ke9EC3BPHnsQ9Clp0iPTQNu-8kUFSziXFrCe5FCcwfNbsoHDTKgVDKiV81vdCw"
+  "notes": "Judge phone app 0.19.11 (build 27): Setup toggle to turn Broken Barrier off on the judge phones. Off, the phones do not show the button and cannot send it; the office can still put the penalty on from the board. Push it to the kit phones from Licence > Update phones.",
+  "url": "https://github.com/kinexjudging/kinex-judging-releases/releases/tag/v0.19.11",
+  "download": "https://github.com/kinexjudging/kinex-judging-releases/releases/download/v0.19.11/Kinex-Judging-0.19.11-win64.zip",
+  "file": "Kinex-Judging-0.19.11-win64.zip",
+  "size": 111081792,
+  "sha256": "897da6baffd98076082be14fa1bb4dc1f7fbece885420374bede91a3a69c9fe6",
+  "signature": "9W3PFL50BwFuOKvp65OSX6c_kiy77r8iMxYRsTZTV5yCboT0PfZo9ktFD4iO0CD407VCL9yFX6oOQN3LxYMEAA"
 }
